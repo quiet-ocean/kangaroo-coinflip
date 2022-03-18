@@ -24,9 +24,12 @@ sh.cd(__dirname)
 const debug = process.argv.pop() === '--debug'
 
 // Use the correct build command based on the `--debug` flag
+// const buildCmd = debug
+//   ? 'npm run build:debug'
+//   : 'npm run build'
 const buildCmd = debug
-  ? 'npm run build:debug'
-  : 'npm run build'
+  ? 'cd coin_flip_contract && cargo build --target wasm32-unknown-unknown'
+  : 'cd coin_flip_contract && cargo build --target wasm32-unknown-unknown --release'
 
 // Execute the build command, storing exit code for later use
 const { code } = sh.exec(buildCmd)
@@ -38,8 +41,10 @@ const { code } = sh.exec(buildCmd)
 if (code === 0 && calledFromDir !== __dirname) {
   const linkDir = `${calledFromDir}/out`
   const link = `${calledFromDir}/out/main.wasm`
-  const packageName = require(`${__dirname}/package.json`).name
-  const outFile = `./build/${debug ? 'debug' : 'release'}/${packageName}.wasm`
+  // const packageName = require(`${__dirname}/package.json`).name
+  const packageName = require('fs').readFileSync(`${__dirname}/coin_flip_contract/Cargo.toml`).toString().match(/name = "([^"]+)"/)[1]
+  // const outFile = `./build/${debug ? 'debug' : 'release'}/${packageName}.wasm`
+  const outFile = `./coin_flip_contract/target/wasm32-unknown-unknown/${debug ? 'debug' : 'release'}/${packageName}.wasm`
   sh.mkdir('-p', linkDir)
   sh.rm('-f', link)
   //fixes #831: copy-update instead of linking .- sometimes sh.ln does not work on Windows
