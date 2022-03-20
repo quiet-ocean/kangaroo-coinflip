@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import "../styles/global.scss";
 import CoinSelect from '../components/CoinSelect';
 import Footer from '../components/Footer';
 import Header from '../components/Header';

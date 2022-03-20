@@ -1,0 +1,29 @@
+
+.header {
+  // position: absolute;
+  // left: 0%;
+  // right: 0%;
+  // top: 0%;
+  // bottom: 0%;
+  position: relative;
+  width: 100%;
+  padding: 24px 109px 24px 109px;
+
+  &_background {
+    position: absolute;
+
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+  
+    /* bg2 */
+  
+    background: #151515;
+    opacity: 0.2;
+    z-index: 0;
+  }
+  &_navbar {
+    z-index: 10;
+  }
+}

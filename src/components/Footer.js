@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/footer.scss';
 import { Stack, Image } from "react-bootstrap";
 import Paras from '../assets/paras.svg';
 import Twitter from '../assets/twitter.svg';
