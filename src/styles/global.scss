@@ -59,11 +59,27 @@ a {
   // right: 0%;
   // top: 0%;
   // bottom: 0%;
+  position: relative;
+  width: 100%;
+  padding: 24px 109px 24px 109px;
+}
+.header-background {
+  position: absolute;
+
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+
+  /* bg2 */
+
   background: #151515;
   opacity: 0.2;
-  width: 100%;
-  color: white;
-  padding: 24px 109px 24px 109px;
+}
+.header > div a {
+  background-color: rgba(128,128,128,0);
+  color: rgba(255,255,255,1);
+  z-index: 1;
 }
 .header a {
   color: white;

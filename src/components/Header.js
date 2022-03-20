@@ -5,6 +5,7 @@ import KangarooLogo from '../assets/kangaroo-logo.png';
 const Header = () => {
   return (
     <div className='header'>
+      <div className='header-background'></div>
       <Stack direction='horizontal' gap={3}>
         <Image src={KangarooLogo} />
         <div style={{}}></div>
@@ -14,7 +15,7 @@ const Header = () => {
           <a href="/#">FAQ</a>
         </Stack>
         <a href="/#" className="bold-btn-string">Connect Wallet</a>
-      </Stack>
+      </Stack>      
     </div>
   );
 };
