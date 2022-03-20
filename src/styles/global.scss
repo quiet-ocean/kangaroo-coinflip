@@ -140,7 +140,29 @@ p {
   
   border-radius: 16px;
 }
+.rc-slider {
+  height: 17px;
+}
+.rc-slider-rail, .rc-slider-track {
+  height: 17px;
+  background: #4A3959;
+border-radius: 24px;
+}
+.rc-slider-track {
 
+}
+.rc-slider-step {
+
+}
+.rc-slider-handle {
+  width: 25px;
+  height: 25px;
+  
+  /* white */
+  
+  background: #FFFFFF;
+  border-radius: 24px;
+}
 
 /* width */
 ::-webkit-scrollbar {
