@@ -10,24 +10,22 @@ const recentFlips = [
 ]
 const RecentFlips = () => {
   return (
-    <Row>
-      <Col md={8} className="recent_flips">
-        <h2 className="bold-font">Recent Flips</h2>
-        <Stack gap={3}>
-          {
-            recentFlips.map((item, key)=>{  
-              return (
-                <Stack direction="horizontal" gap={2} key={key}>
-                  <Image src={RealtimeIcon} />
-                  <p>{item}</p>
-                  <p>1 m</p>
-                </Stack>
-              )
-            })
-          }
-        </Stack>
-      </Col>
-    </Row>
+    <Col md={8} className="recent_flips">
+      <h2 className="bold-font">Recent Flips</h2>
+      <Stack gap={3}>
+        {
+          recentFlips.map((item, key)=>{  
+            return (
+              <Stack direction="horizontal" gap={2} key={key}>
+                <Image src={RealtimeIcon} />
+                <p>{item}</p>
+                <p>1 m</p>
+              </Stack>
+            )
+          })
+        }
+      </Stack>
+    </Col>
   );
 };
 
