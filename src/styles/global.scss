@@ -30,6 +30,7 @@ html {
   // font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   // font-size: calc(0.9em + 0.5vw);
   line-height: 1.3;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -138,4 +139,61 @@ p {
   /* Note: backdrop-filter has minimal browser support */
   
   border-radius: 16px;
+}
+.rc-slider {
+  height: 17px;
+}
+.rc-slider-rail, .rc-slider-track {
+  height: 17px;
+  background: #4A3959;
+border-radius: 24px;
+}
+.rc-slider-track {
+
+}
+.rc-slider-step {
+
+}
+.rc-slider-handle {
+  width: 25px;
+  height: 25px;
+  
+  /* white */
+  
+  background: #FFFFFF;
+  border-radius: 24px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gainsboro;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #898989;
+}
+
+@include media-breakpoint-down(sm) {
+  .coin_select_img {
+    width: 100%;
+  }
+  .coin {
+    width: 100%;
+  }
+  .header {
+    display: none;
+  }
 }

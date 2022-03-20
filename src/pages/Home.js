@@ -18,7 +18,7 @@ const Home = () => {
   const [status, setStatus] = useState(HOME);
 
   useEffect(() => {
-    setStatus(FLIPPING);
+    // setStatus(FLIPPING);
   }, []);
 
   return (
@@ -34,10 +34,10 @@ const Home = () => {
             <CoinSelect />
           </Col>        
         </Row>
-        <Row className={`home_block ${status != HOME ? "home_active" : ''}`} >
+        <Row className={`home_block ${status != HOME ? "home_active" : ''}`} style={{display: 'block'}}>
           <Col>
             <Stack className={``}>
-              <Image src={TailsLogo} width={472} />
+              <Image src={TailsLogo} className='coin' width={472} />
               <p className="bold-font">Flipping 0.1 Ⓝ</p>
               <p className="">You Choose Heads</p>
               <Stack gap={3} className='home_btn_group mt-2 mb-5'>
@@ -59,7 +59,7 @@ const Home = () => {
             </Stack>
           </Col>
         </Row>
-        <Row className = "mt-5"style={{display: `${status===HOME ? 'block' : 'none'}`}}>
+        <Row className = "mt-5 m-auto"style={{display: `${status===HOME ? 'block' : 'none'}`}}>
           <RecentFlips/>
         </Row>
         <Footer />
