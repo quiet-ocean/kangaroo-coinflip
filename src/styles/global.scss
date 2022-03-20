@@ -30,6 +30,7 @@ html {
   // font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   // font-size: calc(0.9em + 0.5vw);
   line-height: 1.3;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -140,6 +141,28 @@ p {
   border-radius: 16px;
 }
 
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gainsboro;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #898989;
+}
 
 @include media-breakpoint-down(sm) {
   .coin_select_img {
