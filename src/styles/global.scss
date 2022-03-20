@@ -5,7 +5,7 @@
 @import "node_modules/bootstrap/scss/variables";
 
 div.row {
-  margin: 0px !important;
+  // margin: 0px !important;
 }
 * {
   box-sizing: border-box;
@@ -33,29 +33,61 @@ html {
 }
 
 body {
+  // position: absolute;
+  //   left: 0%;
+  //   right: 0%;
+  //   top: 0%;
+  //   bottom: 0%;
+  //   z-index: 0;
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-image: url('../assets/background.jpg');
-  background-size: auto 100%;
+  background-size: 100% 100%;
 }
 
 html, body {
-  display: block;
-  // height: 100%;
+    // display: flex;
+    // height: 100%;
+    // width: 100%;
   margin: 0px;
+
+  // position: absolute;
+  // left: 0px;
+  // right: 0px;
+  // top: 0px;
+  // bottom: 0px;
 }
 a {
   text-decoration: none;
   color: white !important;
 }
-.main {
+div.home {
+  z-index: 1;
   margin: 0px;
   width: 100%;
   padding: 0px;
+  &_active {
+    display: block !important;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    margin: auto !important;
+  }
+  &_block {
+    max-width: 472px;
+    min-height: 700px;
+    margin: auto !important;
+    display: none;
+  }
+  
 }
-
-.bold-btn-string {
+p {
+  text-align: center;
+  color: white;
+}
+.bold-font {
   font-family: 'Titillium Web';
   font-style: normal;
   font-weight: 900;
@@ -63,4 +95,15 @@ a {
   line-height: 46px;
   /* white */
   color: #FFFFFF;
+}
+
+
+.btn {
+
+}
+.btn-dark-bg {
+
+}
+.btn-transparent {
+
 }

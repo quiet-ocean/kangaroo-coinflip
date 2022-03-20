@@ -27,6 +27,9 @@
     z-index: 10;
     justify-content: space-between;
 
+    div, img {
+      z-index: 10;
+    }
     div {
       gap: 46px !important;
     }

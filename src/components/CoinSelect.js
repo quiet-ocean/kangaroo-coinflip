@@ -8,14 +8,14 @@ import Coin from "../assets/tails-logo.png";
 const CoinSelect = () => {
   const [flipValue, setFlipValue] = useState(0.1);
   return (
-    <div className="coin_select">
+    <div className="coin_select block">
       <Image src={Coin} className="coin_select_img"/>
       <Stack direction="horizontal" style={{justifyContent: "center"}} gap={3}>
         <button className="coin_select_btn_head">
-          <span className="bold-btn-string">Heads</span>
+          <span className="bold-font">Heads</span>
         </button>
         <button className="coin_select_btn_tails">
-          <span className="bold-btn-string">Tails</span>
+          <span className="bold-font">Tails</span>
         </button>
       </Stack>
       <Stack direction="horizontal" className="coin_select_slider_bar">
@@ -38,8 +38,8 @@ const CoinSelect = () => {
           <span>2 Ⓝ</span>
         </div>
       </Stack>
-      <button className="coin_select_flip_btn coin_select_btn_tails bold-btn-string">
-        <span className="bold-btn-string">Flip {flipValue} Ⓝ</span>
+      <button className="coin_select_flip_btn coin_select_btn_tails bold-font">
+        <span className="bold-font">Flip {flipValue} Ⓝ</span>
       </button>
     </div>
   );

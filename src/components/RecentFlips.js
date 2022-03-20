@@ -12,7 +12,7 @@ const RecentFlips = () => {
   return (
     <Row>
       <Col md={8} className="recent_flips">
-        <h2 className="bold-btn-string">Recent Flips</h2>
+        <h2 className="bold-font">Recent Flips</h2>
         <Stack gap={3}>
           {
             recentFlips.map((item, key)=>{  
