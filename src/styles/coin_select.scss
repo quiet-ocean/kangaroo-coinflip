@@ -1,0 +1,47 @@
+.coin_select {
+  align-items: center;
+   &_img {
+    // width: 438px;
+    // height: 438px;
+  }
+  button {
+    width: 226.43px;
+  }
+  &_slider_bar {
+    padding: 36px 0px 36px 0px;
+
+    span {
+      position: static;
+      left: 0%;
+      right: 83.51%;
+      top: 0%;
+      bottom: 0%;
+
+      /* desk-button */
+
+      font-family: 'Titillium Web';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 30px;
+      line-height: 46px;
+      /* identical to box height */
+
+
+      color: #FFFFFF;
+
+
+      /* Inside auto layout */
+
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      margin: 0px 13px;
+    }
+  }
+  &_slider {
+    width: 58%;
+  }
+  &_flip_btn {
+    width: 100% !important;
+  }
+}
