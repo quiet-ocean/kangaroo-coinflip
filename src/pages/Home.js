@@ -5,6 +5,9 @@ import Header from '../components/Header';
 import CoinFlipping from '../components/CoinFlipping';
 import RecentFlips from '../components/RecentFlips';
 import Flipping from '../assets/kangaflip.gif';
+import HeadsLogo from '../assets/heads-logo.png';
+import TailsLogo from '../assets/tails-logo.png';
+
 
 import { Row, Col, Stack, Image, ThemeProvider } from 'react-bootstrap';
 const HOME = 1;
@@ -23,7 +26,7 @@ const Home = () => {
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
     >
       <div className="home">
-        <Row>
+        <Row style={{margin: "0px"}}>
           <Header />
         </Row>    
         <Row className={`home_block home_start ${status === HOME ? "home_active" : ''}`}>
@@ -34,12 +37,25 @@ const Home = () => {
         <Row className={`home_block ${status != HOME ? "home_active" : ''}`} >
           <Col>
             <Stack className={``}>
-              <Image src={Flipping} width={472} />
+              <Image src={TailsLogo} width={472} />
               <p className="bold-font">Flipping 0.1 Ⓝ</p>
               <p className="">You Choose Heads</p>
-              <div className='home_btn_group'>
-
-              </div>
+              <Stack gap={3} className='home_btn_group mt-2 mb-5'>
+                <Stack direction="horizontal" gap={2}>
+                  <button className="btn-transparent" style={{width: '50%'}}>
+                    <span className="bold-font">Heads</span>
+                  </button>
+                  <button className="btn-transparent" style={{width: '50%'}}>
+                    <span className="bold-font">Tails</span>
+                  </button>
+                </Stack>
+                <button className="btn-dark-bg full-width">
+                  <span className="bold-font">Try Again?</span>
+                </button>
+                <button className="btn-transparent full-width">
+                  <span className="bold-font">Withdraw 2.0 <small>Ⓝ</small></span>
+                </button>
+              </Stack>
             </Stack>
           </Col>
         </Row>

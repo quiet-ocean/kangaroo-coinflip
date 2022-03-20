@@ -11,10 +11,10 @@ const CoinSelect = () => {
     <div className="coin_select block">
       <Image src={Coin} className="coin_select_img"/>
       <Stack direction="horizontal" style={{justifyContent: "center"}} gap={3}>
-        <button className="coin_select_btn_head">
+        <button className="btn-transparent">
           <span className="bold-font">Heads</span>
         </button>
-        <button className="coin_select_btn_tails">
+        <button className="btn-dark-bg">
           <span className="bold-font">Tails</span>
         </button>
       </Stack>
@@ -38,7 +38,7 @@ const CoinSelect = () => {
           <span>2 Ⓝ</span>
         </div>
       </Stack>
-      <button className="coin_select_flip_btn coin_select_btn_tails bold-font">
+      <button className="btn-dark-bg coin_select_flip_btn bold-font">
         <span className="bold-font">Flip {flipValue} Ⓝ</span>
       </button>
     </div>
