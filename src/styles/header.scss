@@ -7,7 +7,7 @@
   // bottom: 0%;
   position: relative;
   width: 100%;
-  padding: 24px 109px 24px 109px;
+  padding: 24px 109px 24px 109px !important;
 
   &_background {
     position: absolute;
@@ -25,5 +25,14 @@
   }
   &_navbar {
     z-index: 10;
+    justify-content: space-between;
+
+    div {
+      gap: 46px !important;
+    }
+  }
+  &_connect_btn {
+    padding: 8px, 16px, 8px, 16px;
+    margin-left: 52px;
   }
 }

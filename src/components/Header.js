@@ -13,7 +13,7 @@ const Header = () => {
           <a href="/#">About</a>
           <a href="/#">How To Play</a>
           <a href="/#">FAQ</a>
-          <a href="/#" className="bold-btn-string">Connect Wallet</a>
+          <a href="/#" className="bold-btn-string header_connect_btn">Connect Wallet</a>
         </Stack>
       </Stack>      
     </div>
