@@ -50,7 +50,7 @@ const Home = () => {
                   </button>
                 </Stack>
                 <button className="btn-dark-bg full-width">
-                  <span className="bold-font">Try Again?</span>
+                  <span className="bold-font">Flip!</span>
                 </button>
                 <button className="btn-transparent full-width">
                   <span className="bold-font">Withdraw 2.0 <small>Ⓝ</small></span>
