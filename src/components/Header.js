@@ -8,7 +8,6 @@ const Header = () => {
       <div className='header-background'></div>
       <Stack direction='horizontal' gap={3}>
         <Image src={KangarooLogo} />
-        <div style={{}}></div>
         <Stack direction="horizontal" className="pull-right" gap={2}>
           <a href="/#">About</a>
           <a href="/#">How To Play</a>

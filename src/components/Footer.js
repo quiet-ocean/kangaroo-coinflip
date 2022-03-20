@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack, Image } from "react-bootstrap";
-import Paras from '../assets/paras.png';
-import Twitter from '../assets/twitter.png';
+import Paras from '../assets/paras.svg';
+import Twitter from '../assets/twitter.svg';
 import Discord from '../assets/discord.svg';
 
 const Footer = () => {

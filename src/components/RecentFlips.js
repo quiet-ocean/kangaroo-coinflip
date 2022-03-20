@@ -12,12 +12,12 @@ const RecentFlips = () => {
   return (
     <Row>
       <Col md={8} className="recent_flips">
-        <h2 clasName="bold-btn-string">Recent Flips</h2>
+        <h2 className="bold-btn-string">Recent Flips</h2>
         <Stack gap={3}>
           {
-            recentFlips.map((item, key)=>{
+            recentFlips.map((item, key)=>{  
               return (
-                <Stack direction="horizontal" gap={2}>
+                <Stack direction="horizontal" gap={2} key={key}>
                   <Image src={RealtimeIcon} />
                   <p>{item}</p>
                   <p>1 m</p>

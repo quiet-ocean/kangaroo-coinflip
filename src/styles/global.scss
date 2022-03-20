@@ -151,8 +151,32 @@ a {
     border-radius: 16px;
     
   }
-  &_scroll_bar {
-    padding: 5px 0px 5px 0px;
+  &_slider_bar {
+    padding: 36px 0px 36px 0px;
+
+    span {
+
+
+      /* desk-button */
+
+      font-family: 'Titillium Web';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 30px;
+      line-height: 46px;
+      /* identical to box height */
+
+
+      color: #FFFFFF;
+
+
+      /* Inside auto layout */
+
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      margin: 0px 13px;
+    }
   }
   &_flip_btn {
     width: 100% !important;
