@@ -10,10 +10,43 @@ div.row {
 * {
   box-sizing: border-box;
 }
-.pull-right {
+.pull-right- {
   float: right;
   justify-content: right;
 }
+.pull-right-footer{
+  float: right;
+  justify-content: right;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .pull-right {
+ display:none;
+  }
+
+  .logo-header{
+    display:none;
+  }
+
+.header-mobile{
+  justify-content: center;
+}
+
+.recent_flips {
+  margin: auto;
+
+  min-height: 625px;
+
+  max-width: 338px !important;
+}
+
+}
+
+
+
+
+
 
 html {
   --bg: #efefef;
@@ -42,10 +75,10 @@ body {
   //   z-index: 0;
 
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover !important;
   background-position: center;
-  background-image: url('../assets/background.jpg');
-  background-size: 100% 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url('../assets/background.jpg');
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 html, body {
@@ -100,6 +133,14 @@ p {
 .btn {
   width: 226.43px;
 }
+.btn:active {
+  // On click
+  // Navigate to: "homepage";
+  // Animate: Push Right;
+  animation-timing-function: cubic-bezier(0.37, -0.13, 0.5, 1.22);
+  animation-duration: 800ms;
+
+}
 .full-width {
   width: 100%;
 }
@@ -140,6 +181,7 @@ p {
   
   border-radius: 16px;
 }
+
 .rc-slider {
   height: 17px;
 }
@@ -193,7 +235,5 @@ border-radius: 24px;
   .coin {
     width: 100%;
   }
-  .header {
-    display: none;
-  }
+
 }
