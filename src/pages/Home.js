@@ -7,6 +7,8 @@ import Header from '../components/Header';
 import RecentFlips from '../components/RecentFlips';
 import FlipBoard from '../components/FlipBoard';
 import CModal from '../components/CModal';
+import Spinner from '../components/Spinner';
+
 import { Row, Col, Stack, Image, ThemeProvider } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -24,6 +26,7 @@ const Home = () => {
   const [txHistory, setTxHistory] = useState([]);
   const [limit, setLimit] = useState(10);
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [balance, setBalance] = useState(null);
 
@@ -140,6 +143,7 @@ const Home = () => {
         <Footer />
       </div>
       <CModal show={show} setShow={setShow} />
+      <Spinner loadingProps={loading} setLoadingFunc={setLoading}/>
       {/* <div className="background" /> */}
     </ThemeProvider>
   );
