@@ -1,25 +1,109 @@
+import nearAPI from "near-api-js";
+
 import React, { useState, useEffect } from 'react';
 import CoinSelect from '../components/CoinSelect';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import CoinFlipping from '../components/CoinFlipping';
 import RecentFlips from '../components/RecentFlips';
-import Flipping from '../assets/kangaflip.gif';
-import HeadsLogo from '../assets/heads-logo.png';
-import TailsLogo from '../assets/tails-logo.png';
-
-
+import FlipBoard from '../components/FlipBoard';
 import { Row, Col, Stack, Image, ThemeProvider } from 'react-bootstrap';
-const HOME = 1;
-const FLIPPING = 2;
-const WON = 3;
-const LOST = 4;
-const Home = () => {
-  const [status, setStatus] = useState(HOME);
+import axios from 'axios';
 
-  useEffect(() => {
+import { initContract } from '../utils.js';
+import { FLIP_GOING, FLIP_WON, FLIP_LOST, FLIP_NONE, FLIP_DOUBLE, HEAD, TAIL } from '../constants';
+
+const API_URL = process.env.API_URL || 'https://localhost:5000';
+const API_KEY = process.env.API_KEY || 0;
+const Home = () => {
+
+  const [status, setStatus] = useState(FLIP_NONE);
+  const [choice, setChoice] = useState(HEAD);
+  // const [result, setResult] = useState(FLIP_NONE);
+  const [value, setValue] = useState(0.1);
+  const [txHistory, setTxHistory] = useState([]);
+  const [limit, setLimit] = useState(10);
+  const [logo, setLogo] = useState(null);
+
+  const [balance, setBalance] = useState(null);
+
+  useEffect(async () => {
     // setStatus(FLIPPING);
+    await initContract();
+    // await loadTxHistory();
+    
+    let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err=>{
+      console.log(err)
+    });
+    setBalance(newBalance)
+
   }, []);
+
+  const deposit = async (nearAmount) => {
+    await window.contract.deposit(
+      {},
+      '300000000000000',
+      nearAPI.utils.format.formatNearAmount(nearAmount)
+    )
+    .then(async res =>{
+      let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err=>{
+        console.log(err)
+      });
+      setBalance(newBalance)
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+  }
+
+  const withdrawal = async () => {
+    await window.contract.retrieve_credits(
+      {},
+      '300000000000000',
+      '0'
+    )
+    .then(async res =>{
+      let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err=>{
+        console.log(err)
+      });
+      setBalance(newBalance)
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+  }
+
+  const flip = () => {
+    
+    let size = nearAPI.utils.format.parseNearAmount(value);
+
+    setStatus(FLIP_GOING);
+    window.contract.play({_bet_type: choice, bet_size: size})
+    .then(res=>{
+      console.log(res);
+      if (res === true) {
+        setStatus(FLIP_WON)
+      } else if (res === false) {
+        setStatus(FLIP_LOST);
+      } else {
+        //add error handler here show modal wwith error
+      }
+    })
+    .catch(err => {
+      setStatus(FLIP_LOST);
+      console.log(err);
+    })
+  }
+  const loadTxHistory = async () => {
+    await axios.get(`${API_URL}?api_key=${API_KEY}&limit=${limit}`)
+      .then(res => {
+        if(res && res.data && res.data.data && res.data.data.length) {
+          setTxHistory(res.data.data);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
   return (
     <ThemeProvider
@@ -27,40 +111,29 @@ const Home = () => {
     >
       <div className="home">
         <Row style={{margin: "0px"}}>
-          <Header />
+          <Header balanceProps={balance} withdrawalFunc={withdrawal} depositFunc={(amount) => deposit(amount)} />
         </Row>    
-        <Row className={`home_block home_start ${status === HOME ? "home_active" : ''}`}>
+        <Row className={`home_block home_start ${status === FLIP_NONE ? "home_active" : ''}`}>
           <Col md={12}>
-            <CoinSelect />
+            <CoinSelect
+            choice={choice}
+            setChoice={setChoice}
+            value={value}
+            setValue={setValue}
+            flip={flip}
+            />
           </Col>        
         </Row>
-        <Row className={`home_block ${status != HOME ? "home_active" : ''}`} style={{display: 'block'}}>
-          <Col>
-            <Stack className={``}>
-              <Image src={TailsLogo} className='coin' width={472} />
-              <p className="bold-font">Flipping 0.1 Ⓝ</p>
-              <p className="">You Choose Heads</p>
-              <Stack gap={3} className='home_btn_group mt-2 mb-5'>
-                <Stack direction="horizontal" gap={2}>
-                  <button className="btn-transparent" style={{width: '50%'}}>
-                    <span className="bold-font">Heads</span>
-                  </button>
-                  <button className="btn-transparent" style={{width: '50%'}}>
-                    <span className="bold-font">Tails</span>
-                  </button>
-                </Stack>
-                <button className="btn-dark-bg full-width">
-                  <span className="bold-font">Flip!</span>
-                </button>
-                <button className="btn-transparent full-width">
-                  <span className="bold-font">Withdraw 2.0 <small>Ⓝ</small></span>
-                </button>
-              </Stack>
-            </Stack>
-          </Col>
+        <Row className={`home_block ${status != FLIP_NONE ? "home_active" : ''}`}>
+          <FlipBoard
+          choice={choice}
+          status={status}
+          setStatus={setStatus}
+          value={value}
+          />
         </Row>
-        <Row className = "mt-5 m-auto"style={{display: `${status===HOME ? 'block' : 'none'}`}}>
-          <RecentFlips/>
+        <Row className = "mt-5 m-auto"style={{display: `${status===FLIP_NONE ? 'block' : 'none'}`}}>
+          <RecentFlips history={ txHistory }/>
         </Row>
         <Footer />
       </div>
