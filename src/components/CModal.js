@@ -9,8 +9,8 @@ function CModal(props) {
   const handleShow = () => setShow(true);
 
   return (
-    <>
-      <Modal show={show} onHide={handleClose}>
+    <div className='cmodal'>
+      <Modal show={show} onHide={handleClose} className='cmodal'>
         <Modal.Header closeButton>
           <Modal.Title>Notice</Modal.Title>
         </Modal.Header>
@@ -34,7 +34,7 @@ function CModal(props) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 }
 

@@ -1,14 +1,17 @@
-.modal-body {
-  p {
-    color: black;
-    text-align: left;
-  }
-}
-
-.popup {
+.cmodal {
   .modal-body {
     p {
-      text-align: center;
+      color: black;
+      text-align: left;
     }
   }
+  
+  
 }
+.popup {
+    .modal-body {
+      p {
+        text-align: center;
+      }
+    }
+  }
