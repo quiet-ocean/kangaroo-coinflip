@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecentFlips from '../components/RecentFlips';
 import FlipBoard from '../components/FlipBoard';
+import CModal from '../components/CModal';
 import { Row, Col, Stack, Image, ThemeProvider } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -22,7 +23,7 @@ const Home = () => {
   const [value, setValue] = useState(0.1);
   const [txHistory, setTxHistory] = useState([]);
   const [limit, setLimit] = useState(10);
-  const [logo, setLogo] = useState(null);
+  const [show, setShow] = useState(false);
 
   const [balance, setBalance] = useState(null);
 
@@ -56,20 +57,21 @@ const Home = () => {
   }
 
   const withdrawal = async () => {
-    await window.contract.retrieve_credits(
-      {},
-      '300000000000000',
-      '0'
-    )
-    .then(async res =>{
-      let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err=>{
-        console.log(err)
-      });
-      setBalance(newBalance)
-    })
-    .catch(err=>{
-      console.log(err);
-    })
+    setShow(true);
+    // await window.contract.retrieve_credits(
+    //   {},
+    //   '300000000000000',
+    //   '0'
+    // )
+    // .then(async res =>{
+    //   let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err=>{
+    //     console.log(err)
+    //   });
+    //   setBalance(newBalance)
+    // })
+    // .catch(err=>{
+    //   console.log(err);
+    // })
   }
 
   const flip = () => {
@@ -85,7 +87,7 @@ const Home = () => {
       } else if (res === false) {
         setStatus(FLIP_LOST);
       } else {
-        //add error handler here show modal wwith error
+        //add error handler here show modal with error
       }
     })
     .catch(err => {
@@ -137,6 +139,7 @@ const Home = () => {
         </Row>
         <Footer />
       </div>
+      <CModal show={show} setShow={setShow} />
       {/* <div className="background" /> */}
     </ThemeProvider>
   );
