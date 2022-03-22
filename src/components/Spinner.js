@@ -14,11 +14,11 @@ function Spinner(props) {
   const handleShow = () => setShow(true);
 
   return (
-    <>
+    <div className='spinner'>
       <Modal show={show}>
         <Image src={SpinnerIcon} />
       </Modal>
-    </>
+    </div>
   );
 }
 

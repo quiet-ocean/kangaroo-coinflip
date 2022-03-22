@@ -1,9 +1,11 @@
-.modal-content {
-  width: 50px !important;
-  margin: auto !important;
-  background: transparent !important;
-  border: none !important;
-}
-.modal-dialog {
-  margin-top: 30% !important;
+.spinner {
+  .modal-content {
+    width: 50px !important;
+    margin: auto !important;
+    background: transparent !important;
+    border: none !important;
+  }
+  .modal-dialog {
+    margin-top: 30% !important;
+  }
 }

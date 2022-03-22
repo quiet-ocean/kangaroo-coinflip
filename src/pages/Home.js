@@ -1,4 +1,4 @@
-import nearAPI from "near-api-js";
+import { nearAPI } from "near-api-js";
 
 import React, { useState, useEffect } from 'react';
 import CoinSelect from '../components/CoinSelect';
@@ -7,9 +7,10 @@ import Header from '../components/Header';
 import RecentFlips from '../components/RecentFlips';
 import FlipBoard from '../components/FlipBoard';
 import CModal from '../components/CModal';
+import PopupModal from '../components/PopupModal';
 import Spinner from '../components/Spinner';
 
-import { Row, Col, Stack, Image, ThemeProvider } from 'react-bootstrap';
+import { Row, Col, Stack, Image, ThemeProvider, bootstrap } from 'react-bootstrap';
 import axios from 'axios';
 
 import { initContract } from '../utils.js';
@@ -26,7 +27,9 @@ const Home = () => {
   const [txHistory, setTxHistory] = useState([]);
   const [limit, setLimit] = useState(10);
   const [show, setShow] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
 
   const [balance, setBalance] = useState(null);
 
@@ -42,6 +45,14 @@ const Home = () => {
 
   }, []);
 
+  const showPopupModal = (msg) => {
+    setErrMsg(msg);
+    setShowPopup(true);
+  }
+  const hidePopupModal= () => {
+    setShowPopup(false);
+
+  }
   const deposit = async (nearAmount) => {
     await window.contract.deposit(
       {},
@@ -60,6 +71,7 @@ const Home = () => {
   }
 
   const withdrawal = async () => {
+
     setShow(true);
     // await window.contract.retrieve_credits(
     //   {},
@@ -78,7 +90,7 @@ const Home = () => {
   }
 
   const flip = () => {
-    
+    console.log(nearAPI);
     let size = nearAPI.utils.format.parseNearAmount(value);
 
     setStatus(FLIP_GOING);
@@ -91,6 +103,8 @@ const Home = () => {
         setStatus(FLIP_LOST);
       } else {
         //add error handler here show modal with error
+        // console.log('flip failed');
+        showPopupModal('flip failed');
       }
     })
     .catch(err => {
@@ -142,6 +156,7 @@ const Home = () => {
         </Row>
         <Footer />
       </div>
+      <PopupModal show={showPopup} setShow={setShowPopup} msg={errMsg}/>
       <CModal show={show} setShow={setShow} />
       <Spinner loadingProps={loading} setLoadingFunc={setLoading}/>
       {/* <div className="background" /> */}
