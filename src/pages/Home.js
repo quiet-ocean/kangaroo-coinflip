@@ -26,7 +26,7 @@ const Home = () => {
   const [txHistory, setTxHistory] = useState([]);
   const [limit, setLimit] = useState(10);
   const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const [balance, setBalance] = useState(null);
 

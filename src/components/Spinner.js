@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/spinner.scss';
-import { Modal, Button, InputGroup,FormControl } from 'react-bootstrap';
+import { Modal, Image } from 'react-bootstrap';
+
+import SpinnerIcon from '../assets/loading-buffering.gif';
 
 function Spinner(props) {
   const { loadingProps, setLoadingFunc } = props;
@@ -14,7 +16,7 @@ function Spinner(props) {
   return (
     <>
       <Modal show={show}>
-        <p>Loading</p>
+        <Image src={SpinnerIcon} />
       </Modal>
     </>
   );
