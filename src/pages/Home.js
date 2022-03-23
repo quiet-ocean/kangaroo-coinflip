@@ -11,6 +11,9 @@ import FlipBoard from '../components/FlipBoard';
 import CModal from '../components/CModal';
 import PopupModal from '../components/PopupModal';
 import Spinner from '../components/Spinner';
+import About from '../components/About';
+import Faq from '../components/Faq';
+import HowTo from '../components/HowTo';
 
 import { Row, Col, Stack, Image, ThemeProvider, Modal, Button } from 'react-bootstrap';
 import axios from 'axios';
@@ -35,6 +38,9 @@ const Home = () => {
   const [errMsg, setErrMsg] = useState('');
 
   const [balance, setBalance] = useState(null);
+
+  const [shows, setShows] = useState({about: false, faq: false, howTo: false, login: false, funding: false});
+
 
   useEffect(async () => {
     // setStatus(FLIPPING);
@@ -174,7 +180,7 @@ const Home = () => {
     >
       <div className="home">
         <Row style={{margin: "0px"}}>
-          <Header balanceProps={nearConversion(balance)} setshowDeposit={setshowDeposit} />
+          <Header balanceProps={nearConversion(balance)} setshowDeposit={setshowDeposit} showsProps={shows} setShowsFunc={setShows} />
         </Row>    
         <Row className={`home_block home_start ${status === FLIP_NONE ? "home_active" : ''}`}>
           <Col md={12}>
@@ -203,8 +209,10 @@ const Home = () => {
       <PopupModal show={showPopup} setShow={setShowPopup} msg={errMsg} title={errTitle}/>
       <CModal show={showDeposit} setShow={setshowDeposit} deposit={deposit} withdrawal={withdrawal} id='modal' />
       <Spinner loadingProps={loading} setLoadingFunc={setLoading}/>
+      <About show={shows.about} setShow={(f) => setShows({...shows, about: f})}/>
+      <Faq show={shows.faq} setShow={(f) => setShows({...shows, faq: f})}/>
+      <HowTo show={shows.howTo} setShow={(f) => setShows({...shows, howTo: f})}/>
       <div id='modal-container' />
-      {/* <div className="background" /> */}
     </ThemeProvider>
   );
 };

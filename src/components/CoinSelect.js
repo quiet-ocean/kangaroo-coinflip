@@ -46,7 +46,7 @@ const CoinSelect = (props) => {
           min={0}
           max={5}
           defaultValue={0.1}
-          step={0.01}
+          step={0.1}
           />
         </div>
         <div>
