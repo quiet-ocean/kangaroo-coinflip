@@ -34,3 +34,5 @@ yarn.lock
 
 /.parcel-cache
 
+/contract/coin_flip_contract/target
+/contract/nep_171/target/
