@@ -5,13 +5,73 @@
       text-align: left;
     }
   }
-  
-  
 }
 .popup {
-    .modal-body {
-      p {
-        text-align: center;
-      }
+  .modal-body {
+    p {
+      text-align: center;
     }
   }
+}
+
+.dark-modal {
+
+  color: white;
+  .btn-close {
+    color: white;
+  }
+  .modal-content {
+    // width: 328px;
+    margin: auto;
+    background: #4A3959;
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .modal-header {
+    border-bottom: none;
+  }
+  .modal-body {
+    // padding: 0px;
+
+  }
+  .modal-title, p{
+    text-align: left;
+  }
+  .modal-title {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 37px;
+    /* identical to box height */
+
+    letter-spacing: 0.03em;
+
+    /* white */
+
+    color: #FFFFFF;
+  }
+  h4.title {
+    //styleName: mobile-h3;
+    font-family: Titillium Web;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+  p {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+
+    /* white */
+
+    color: #FFFFFF;
+  }
+}
