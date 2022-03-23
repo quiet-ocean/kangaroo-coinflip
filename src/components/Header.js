@@ -7,10 +7,10 @@ import { login, logout } from '../utils.js';
 const Header = (props) => {
   
   let connectionButton;
-  if (window.accountId == null) {
+  if (window.accountId == null || typeof window.accountId === 'undefined' || accountId == '') {
     connectionButton = <button className="bold-font btn-transparent header_connect_btn" onClick={()=>login()}>Connect Wallet</button>;
   } else {
-    connectionButton = <button className="bold-font btn-transparent header_connect_btn" onClick={()=>props.withdrawalFunc()}>Ⓝ {props.balanceProps}</button>;
+    connectionButton = <button className="bold-font btn-transparent header_connect_btn" onClick={()=>props.setshowDeposit(true)}>Ⓝ {props.balanceProps}</button>;
   }
 
   return (

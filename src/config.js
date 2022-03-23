@@ -1,4 +1,4 @@
-const CONTRACT_NAME = process.env.CONTRACT_NAME ||'contract.ckcoinflip.testnet'
+const CONTRACT_NAME = 'kcfhouse.near'
 
 function getConfig(env) {
   switch (env) {
