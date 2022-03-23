@@ -11,7 +11,7 @@ const Faq = (props) => {
   return (
     <Modal show={show} onHide={handleClose} className='dark-modal m-auto'>
       <Modal.Header closeButton>
-        <Modal.Title>Fap</Modal.Title>
+        <Modal.Title>FAQ</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
