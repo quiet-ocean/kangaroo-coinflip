@@ -11,39 +11,23 @@ const About = (props) => {
   return (
     <Modal show={show} onHide={handleClose} className='dark-modal m-auto'>
       <Modal.Header closeButton>
-        <Modal.Title>Fap</Modal.Title>
+        <Modal.Title>Flip Responsibly</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
+        <p>Please flip responsibly when playing KCF so it does not impact your well-being . Only play with NEAR you are willing to part with.</p>
         <h4 className='title'>
-          What is Kangaroo Coin Flip?
-        </h4>
-        <p>Kangaroo Coin Flip is a smart contract that allows users to go double or nothing with NEAR tokens. Odds are 50/50 with a % fee that goes to KCF NFT holders.</p>
-        <h4 className='title'>
-          House Wallet
+          Resources
         </h4>
         <p>
-          kcfhouse.near
+          Chat WWW.NCPGAMBLING.ORG/CHAT
         </p>
-        <h4 className='title'>
-          Developer Wallet
-        </h4>
         <p>
-          kcfteam.near
+          Call 1-900-522-4700
         </p>
-        <h4 className='title'>
-          Where can I learn more?
-        </h4>
         <p>
-          Hop on over to our Discord!
-          https://discord.gg/M9BYrTAPZp
-        </p>
-        <h4 className='title'>
-          Where can I learn more?
-        </h4>
-        <p>
-          Each flip has a 4.5% fee applied with 4% going to holders, .25% going to the kcfhouse.near, and .25% going to the kcfteam.near
-        </p>
+          Text 1-800-522-4700
+        </p>        
       </Modal.Body>
     </Modal>
   )

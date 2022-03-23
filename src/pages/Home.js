@@ -12,6 +12,8 @@ import CModal from '../components/CModal';
 import PopupModal from '../components/PopupModal';
 import Spinner from '../components/Spinner';
 import About from '../components/About';
+import Faq from '../components/Faq';
+import HowTo from '../components/HowTo';
 
 import { Row, Col, Stack, Image, ThemeProvider, Modal, Button } from 'react-bootstrap';
 import axios from 'axios';
@@ -37,8 +39,8 @@ const Home = () => {
 
   const [balance, setBalance] = useState(null);
 
-  const [shows, setShows] = useState({about: true, faq: false, howTo: false, login: false, funding: false});
-  
+  const [shows, setShows] = useState({about: false, faq: false, howTo: false, login: false, funding: false});
+
 
   useEffect(async () => {
     // setStatus(FLIPPING);
@@ -208,8 +210,9 @@ const Home = () => {
       <CModal show={showDeposit} setShow={setshowDeposit} deposit={deposit} withdrawal={withdrawal} id='modal' />
       <Spinner loadingProps={loading} setLoadingFunc={setLoading}/>
       <About show={shows.about} setShow={(f) => setShows({...shows, about: f})}/>
+      <Faq show={shows.faq} setShow={(f) => setShows({...shows, faq: f})}/>
+      <HowTo show={shows.howTo} setShow={(f) => setShows({...shows, howTo: f})}/>
       <div id='modal-container' />
-      {/* <div className="background" /> */}
     </ThemeProvider>
   );
 };
