@@ -15,14 +15,14 @@ const Footer = () => {
           <a href="/#">FAQ</a>
         </Stack>
         <Stack direction="horizontal" className="mt-2" gap={3}>
-          <a href=" https://paras.id/collection/classykangaroos1.near  ">
+          <a href=" https://paras.id/collection/classykangaroos1.near" target="_blank" rel="noopener noreferrer">
             <Image src={Paras} />{" "}
           </a>
-          <a href=" https://twitter.com/ClassyKangaroos">
+          <a href=" https://twitter.com/ClassyKangaroos" target="_blank" rel="noopener noreferrer">
             {" "}
             <Image src={Twitter} />{" "}
           </a>
-          <a href="https://discord.gg/M9BYrTAPZp">
+          <a href="https://discord.gg/M9BYrTAPZp" target="_blank" rel="noopener noreferrer">
             {" "}
             <Image src={Discord} />{" "}
           </a>

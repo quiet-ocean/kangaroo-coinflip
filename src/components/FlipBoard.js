@@ -14,14 +14,16 @@ const FlipBoard = (props) => {
   const getText = () => {
     let head = '';
     let desc = '';
+    let wonValue;
     if(status == FLIP_GOING) {
       head = 'Flipping ' + value + ' Ⓝ';
       desc = 'You Choose ' + (choice ? 'Heads' : 'Tails');
     } else if(status === FLIP_WON) {
-      head = 'You Won' + value * 2 + ' Ⓝ';
+      wonValue = (value * (0.955) * 2).toFixed(2).toString();
+      head = 'You Won ' + wonValue + ' Ⓝ';
       desc = 'Current Streak: ' + 1;
     } else if(status === FLIP_LOST) {
-      head = 'You Lost ' + value + ' Ⓝ';
+      head = 'You Lost ' + value.toString() + ' Ⓝ';
       desc = 'Current Streak: ' + 0;
     } else {
       head = '';
@@ -30,14 +32,46 @@ const FlipBoard = (props) => {
 
     return { head: head, desc: desc }
   }
-  return (
-    <Col>
-      <Stack className={``}>
-        <div className='logos'>
+
+  let coinSection;
+  if (status === FLIP_GOING) {
+    coinSection = (
+      <div className='logos'>
           <Image src={Flipping} style={{display: `${status===FLIP_GOING ? 'block' : 'none'}`}} className='coin' width={472} />
           <Image src={HeadsLogo} style={{display: `${status!=FLIP_GOING && choice===true? 'block' : 'none'}`}} className='coin' width={472} />
           <Image src={TailsLogo} style={{display: `${status!=FLIP_GOING && choice===false? 'block' : 'none'}`}} className='coin' width={472} />
-        </div>
+      </div>
+    )
+  } else if (status === FLIP_WON) {
+    coinSection = (
+      <div className='logos'>
+            <Image src={Flipping} style={{display: `${status===FLIP_GOING ? 'block' : 'none'}`}} className='coin' width={472} />
+            <Image src={HeadsLogo} style={{display: `${status!=FLIP_GOING && choice===true? 'block' : 'none'}`}} className='coin' width={472} />
+            <Image src={TailsLogo} style={{display: `${status!=FLIP_GOING && choice===false? 'block' : 'none'}`}} className='coin' width={472} />
+      </div>
+    )
+  } else if (status === FLIP_LOST) {
+    coinSection = (
+      <div className='logos'>
+            <Image src={Flipping} style={{display: `${status===FLIP_GOING ? 'block' : 'none'}`}} className='coin' width={472} />
+            <Image src={HeadsLogo} style={{display: `${status!=FLIP_GOING && choice===false? 'block' : 'none'}`}} className='coin' width={472} />
+            <Image src={TailsLogo} style={{display: `${status!=FLIP_GOING && choice===true? 'block' : 'none'}`}} className='coin' width={472} />
+      </div>
+    )
+  } else {
+    coinSection = (
+      <div className='logos'>
+            <Image src={Flipping} style={{display: `${status===FLIP_GOING ? 'block' : 'none'}`}} className='coin' width={472} />
+            <Image src={HeadsLogo} style={{display: `${status!=FLIP_GOING && choice===true? 'block' : 'none'}`}} className='coin' width={472} />
+            <Image src={TailsLogo} style={{display: `${status!=FLIP_GOING && choice===false? 'block' : 'none'}`}} className='coin' width={472} />
+      </div>
+    )
+  }
+
+  return (
+    <Col>
+      <Stack className={``}>
+        {coinSection}
         <p className="bold-font">{getText().head}</p>
         <p className="">{getText().desc}</p>
         <Stack gap={3} className='home_btn_group mt-2 mb-5'>
@@ -65,15 +99,9 @@ const FlipBoard = (props) => {
           <button
           className="btn-dark-bg full-width"
           style={{display: `${ status === FLIP_WON ? 'block' : 'none' }`}}
-          onClick={()=>setStatus(FLIP_DOUBLE)}
+          onClick={()=>setStatus(FLIP_NONE)}
           >
-            <span className="bold-font">Double Or Nothing!</span>
-          </button>
-          <button
-          className="btn-transparent full-width"
-          style={{visibility: `${status===FLIP_WON || status===FLIP_DOUBLE ? 'visible' : 'hidden'}`}}
-          >
-            <span className="bold-font">Withdraw 2.0 <small>Ⓝ</small></span>
+            <span className="bold-font">Play again!</span>
           </button>
         </Stack>
       </Stack>
