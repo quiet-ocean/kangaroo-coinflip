@@ -36,7 +36,7 @@ const Faq = (props) => {
         </h4>
         <p>
           Hop on over to our Discord!
-          https://discord.gg/M9BYrTAPZp
+          <a href="https://discord.gg/M9BYrTAPZp" target='_blank'>https://discord.gg/M9BYrTAPZp</a>
         </p>
         <h4 className='title'>
           Where can I learn more?
