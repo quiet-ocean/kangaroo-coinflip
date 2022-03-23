@@ -204,7 +204,7 @@ const Home = () => {
         <Row className = "mt-5 m-auto"style={{display: `${status===FLIP_NONE ? 'block' : 'none'}`}}>
           <RecentFlips history={ txHistory }/>
         </Row>
-        <Footer />
+        <Footer showsProps={shows} setShowsFunc={setShows}/>
       </div>
       <PopupModal show={showPopup} setShow={setShowPopup} msg={errMsg} title={errTitle}/>
       <CModal show={showDeposit} setShow={setshowDeposit} deposit={deposit} withdrawal={withdrawal} id='modal' />
