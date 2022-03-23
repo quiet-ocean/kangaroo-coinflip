@@ -13,10 +13,10 @@ function CModal(props) {
     console.log(inputBox);
   }
   return (
-    <div className='cmodal'>
-      <Modal show={show} onHide={handleClose} className='cmodal'>
+    <div className='dark-modal'>
+      <Modal show={show} onHide={handleClose} className='dark-modal'>
         <Modal.Header closeButton>
-          <Modal.Title>Notice</Modal.Title>
+          <Modal.Title>Funding</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
@@ -37,10 +37,10 @@ function CModal(props) {
           </InputGroup>
         </Modal.Body> 
         <Modal.Footer>
-          <Button variant="secondary" onClick={_ =>deposit(inputBox)}>
+          <Button className="bg-white text-purple" variant="secondary" onClick={_ =>deposit(inputBox)}>
             Deposit
           </Button>
-          <Button variant="primary" onClick={_ => withdrawal()}>
+          <Button className="bg-purple text-white" variant="primary" onClick={_ => withdrawal()}>
             Withdraw my balance 
           </Button>
         </Modal.Footer>
