@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Win = () => {
+const About = () => {
   return (
     <>Win</>
   );
 };
 
-export default Win;
+export default About;
