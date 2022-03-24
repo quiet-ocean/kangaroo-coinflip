@@ -39,7 +39,7 @@ const Home = () => {
 
   const [balance, setBalance] = useState(null);
 
-  const [shows, setShows] = useState({about: false, faq: false, howTo: false, login: false, funding: false});
+  const [shows, setShows] = useState({ about: false, faq: false, howTo: false, login: false, funding: false });
 
 
   useEffect(async () => {
@@ -47,8 +47,8 @@ const Home = () => {
     setLoading(true);
     await initContract();
     // await loadTxHistory();
-    
-    let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err=>{
+
+    let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err => {
       console.log(err)
     });
     setBalance(newBalance)
@@ -85,18 +85,18 @@ const Home = () => {
       '300000000000000',
       yoctoConversion(nearAmount)
     )
-    .then(async res =>{
-      let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err=>{
-        console.log(err)
-      });
-      setBalance(newBalance);
-      setLoading(false);
-    })
-    .catch(err=>{
-      console.log(err);
-      setLoading(false);
-      showPopupModal('deposit failed', JSON.stringify(err));
-    })
+      .then(async res => {
+        let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err => {
+          console.log(err)
+        });
+        setBalance(newBalance);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.log(err);
+        setLoading(false);
+        showPopupModal('deposit failed', JSON.stringify(err));
+      })
   };
 
   const withdrawal = async () => {
@@ -110,15 +110,15 @@ const Home = () => {
       '300000000000000',
       '0'
     )
-    .then(async res =>{
-      let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err=>{
-        console.log(err)
-      });
-      setBalance(newBalance);
-    })
-    .catch(err=>{
-      console.log(err);
-    })
+      .then(async res => {
+        let newBalance = await window.contract.get_credits({ account_id: window.accountId }).catch(err => {
+          console.log(err)
+        });
+        setBalance(newBalance);
+      })
+      .catch(err => {
+        console.log(err);
+      })
     setLoading(false);
     setshowDeposit(false);
   };
@@ -134,32 +134,32 @@ const Home = () => {
     }
 
     setStatus(FLIP_GOING);
-    await window.contract.play({_bet_type: choice, bet_size: size})
-    .then(async res=>{
-      console.log(res);
-      if (res === true) {
-        setStatus(FLIP_WON)
-      } else if (res === false) {
+    await window.contract.play({ _bet_type: choice, bet_size: size })
+      .then(async res => {
+        console.log(res);
+        if (res === true) {
+          setStatus(FLIP_WON)
+        } else if (res === false) {
+          setStatus(FLIP_LOST);
+        } else {
+          //add error handler here show modal with error
+          showPopupModal('flip failed', 'an error occured');
+        }
+        let newBalance = await window.contract.get_credits({ account_id: window.accountId })
+        setBalance(newBalance);
+      })
+      .catch(err => {
         setStatus(FLIP_LOST);
-      } else {
-        //add error handler here show modal with error
-        showPopupModal('flip failed', 'an error occured');
-      }
-      let newBalance = await window.contract.get_credits({ account_id: window.accountId })
-      setBalance(newBalance);
-    })
-    .catch(err => {
-      setStatus(FLIP_LOST);
-      showPopupModal('flip failed', JSON.stringify(err));
-      console.log(err);
-    })
+        showPopupModal('flip failed', JSON.stringify(err));
+        console.log(err);
+      })
   };
 
   const loadTxHistory = async () => {
     await axios.get(`https://indexer.havendao.community/api/kcfhouse.near?api_key=d6fff89b7d6957cbc50b6f9b`)
       .then(res => {
         console.log(res);
-        if(res && res.data && res.data.data && res.data.data.length) {
+        if (res && res.data && res.data.data && res.data.data.length) {
           setTxHistory(res.data.data);
         }
       })
@@ -179,39 +179,39 @@ const Home = () => {
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
     >
       <div className="home">
-        <Row style={{margin: "0px"}}>
+        <Row style={{ margin: "0px" }}>
           <Header balanceProps={nearConversion(balance)} setshowDeposit={setshowDeposit} showsProps={shows} setShowsFunc={setShows} />
-        </Row>    
+        </Row>
         <Row className={`home_block home_start ${status === FLIP_NONE ? "home_active" : ''}`}>
           <Col md={12}>
             <CoinSelect
-            choice={choice}
-            setChoice={setChoice}
-            value={value}
-            setValue={setValue}
-            flip={flip}
+              choice={choice}
+              setChoice={setChoice}
+              value={value}
+              setValue={setValue}
+              flip={flip}
             />
-          </Col>        
+          </Col>
         </Row>
         <Row className={`home_block ${status != FLIP_NONE ? "home_active" : ''}`}>
           <FlipBoard
-          choice={choice}
-          status={status}
-          setStatus={setStatus}
-          value={value}
+            choice={choice}
+            status={status}
+            setStatus={setStatus}
+            value={value}
           />
         </Row>
-        <Row className = "mt-5 m-auto"style={{display: `${status===FLIP_NONE ? 'block' : 'none'}`}}>
-          <RecentFlips history={ txHistory }/>
+        <Row className="mt-5 mx-3" style={{ display: `${status === FLIP_NONE ? 'block' : 'none'}` }}>
+          <RecentFlips history={txHistory} />
         </Row>
-        <Footer showsProps={shows} setShowsFunc={setShows}/>
+        <Footer showsProps={shows} setShowsFunc={setShows} />
       </div>
-      <PopupModal show={showPopup} setShow={setShowPopup} msg={errMsg} title={errTitle}/>
+      <PopupModal show={showPopup} setShow={setShowPopup} msg={errMsg} title={errTitle} />
       <CModal show={showDeposit} setShow={setshowDeposit} deposit={deposit} withdrawal={withdrawal} id='modal' />
-      <Spinner loadingProps={loading} setLoadingFunc={setLoading}/>
-      <About show={shows.about} setShow={(f) => setShows({...shows, about: f})}/>
-      <Faq show={shows.faq} setShow={(f) => setShows({...shows, faq: f})}/>
-      <HowTo show={shows.howTo} setShow={(f) => setShows({...shows, howTo: f})}/>
+      <Spinner loadingProps={loading} setLoadingFunc={setLoading} />
+      <About show={shows.about} setShow={(f) => setShows({ ...shows, about: f })} />
+      <Faq show={shows.faq} setShow={(f) => setShows({ ...shows, faq: f })} />
+      <HowTo show={shows.howTo} setShow={(f) => setShows({ ...shows, howTo: f })} />
       <div id='modal-container' />
     </ThemeProvider>
   );

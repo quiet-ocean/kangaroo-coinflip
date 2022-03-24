@@ -13,14 +13,14 @@ const RecentFlips = (props) => {
   const { history } = props;
 
   const getTime = (time) => {
-    
+
     let currentTime = new Date().getTime();
     let min = parseInt((currentTime - time) / 60);
     let hour = 0;
 
-    if(min >= 60) {
+    if (min >= 60) {
       hour = parseInt(min / 60);
-      min = min %60;
+      min = min % 60;
     }
     return (hour > 0) ? hour + ' h ' + min + ' m' : min + ' m';
   }
@@ -28,14 +28,14 @@ const RecentFlips = (props) => {
   return (
     <Col md={8} className="recent_flips">
       <h2 className="bold-font">Recent Flips</h2>
-      <Stack gap={3}>
+      <Stack gap={3} className="px-0 px-md-4">
         {
-          history.map((item, key)=>{  
+          history.map((item, key) => {
             return (
               <Stack direction="horizontal" className="recent_flips_item" gap={2} key={key}>
                 <Image src={RealtimeIcon} />
-                <p>{item.signer_id + ` flipped ` +item.amount + ' Ⓝ and ' + item.result.toLowerCase() }</p>
-                <p>{ getTime(item.timestamp) }</p>
+                <p>{item.signer_id + ` flipped ` + item.amount + ' Ⓝ and ' + item.result.toLowerCase()}</p>
+                <p>{getTime(item.timestamp)}</p>
               </Stack>
             )
           })

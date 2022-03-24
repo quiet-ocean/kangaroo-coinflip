@@ -1,4 +1,4 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 @import "node_modules/bootstrap/scss/mixins";
 @import "node_modules/bootstrap/scss/functions";
@@ -14,39 +14,30 @@ div.row {
   float: right;
   justify-content: right;
 }
-.pull-right-footer{
+.pull-right-footer {
   float: right;
   justify-content: right;
 }
 
-
 @media only screen and (max-width: 768px) {
   .pull-right {
- display:none;
+    display: none;
   }
 
-  .logo-header{
-    display:none;
+  .logo-header {
+    display: none;
   }
 
-.header-mobile{
-  justify-content: center;
+  .header-mobile {
+    justify-content: center;
+  }
+
+  .recent_flips {
+    margin: auto;
+    min-height: 400px;
+    // max-width: 338px !important;
+  }
 }
-
-.recent_flips {
-  margin: auto;
-
-  min-height: 625px;
-
-  max-width: 338px !important;
-}
-
-}
-
-
-
-
-
 
 html {
   --bg: #efefef;
@@ -55,8 +46,8 @@ html {
   --light-gray: #ccc;
   --shadow: #e6e6e6;
   --success: rgb(90, 206, 132);
-  --primary: #FF585D;
-  --secondary: #0072CE;
+  --primary: #ff585d;
+  --secondary: #0072ce;
 
   background-color: var(--bg);
   color: var(--fg);
@@ -77,14 +68,16 @@ body {
   background-repeat: no-repeat;
   background-size: cover !important;
   background-position: center;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url('../assets/background.jpg');
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)),
+    url("../assets/background.jpg");
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-html, body {
-    // display: flex;
-    // height: 100%;
-    // width: 100%;
+html,
+body {
+  // display: flex;
+  // height: 100%;
+  // width: 100%;
   margin: 0px;
 
   // position: absolute;
@@ -115,20 +108,19 @@ div.home {
     margin: auto !important;
     display: none;
   }
-  
 }
 p {
   text-align: center;
   color: white;
 }
 .bold-font {
-  font-family: 'Titillium Web';
+  font-family: "Titillium Web";
   font-style: normal;
   font-weight: 900;
   font-size: 30px;
   line-height: 46px;
   /* white */
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .btn {
   width: 226.43px;
@@ -139,7 +131,6 @@ p {
   // Animate: Push Right;
   animation-timing-function: cubic-bezier(0.37, -0.13, 0.5, 1.22);
   animation-duration: 800ms;
-
 }
 .full-width {
   width: 100%;
@@ -150,16 +141,16 @@ p {
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
-  background: #4A3959;
+  background: #4a3959;
   /* highlight2 */
 
-  border: 1.5px solid #FFFFFF8C;
+  border: 1.5px solid #ffffff8c;
   // border: 1.5px solid rgba(255, 255, 255, 0.55);
   box-sizing: border-box;
   /* drop-shdw */
 
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 16px; 
+  border-radius: 16px;
 }
 .btn-transparent {
   display: flex;
@@ -167,42 +158,41 @@ p {
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
-  
+
   /* highlight */
-  
+
   background: rgba(255, 255, 255, 0.02);
   /* highlight */
-  
+
   border: 1.5px solid rgba(255, 255, 255, 0.02);
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
   /* Note: backdrop-filter has minimal browser support */
-  
+
   border-radius: 16px;
 }
 
 .rc-slider {
   height: 17px;
 }
-.rc-slider-rail, .rc-slider-track {
+.rc-slider-rail,
+.rc-slider-track {
   height: 17px;
-  background: #4A3959;
-border-radius: 24px;
+  background: #4a3959;
+  border-radius: 24px;
 }
 .rc-slider-track {
-
 }
 .rc-slider-step {
-
 }
 .rc-slider-handle {
   width: 25px;
   height: 25px;
-  
+
   /* white */
-  
-  background: #FFFFFF;
+
+  background: #ffffff;
   border-radius: 24px;
 }
 
@@ -236,11 +226,10 @@ border-radius: 24px;
   .coin {
     width: 100%;
   }
-
 }
 .bg-purple {
-  background: #4A3959;
+  background: #4a3959;
 }
 .text-purple {
-  color: #4A3959 !important;
+  color: #4a3959 !important;
 }
